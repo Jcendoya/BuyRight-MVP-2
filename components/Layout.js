@@ -3,7 +3,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-gray-50 text-slate-800">
       <header className="bg-[#1E293B] text-white p-6 shadow">
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
-          <img src="/logo.png" alt="BuyRight Logo" className="h-20 mb-2" />
+          <img src="/logo.png" alt="BuyRight Logo" className="h-[160px] w-auto mb-4" />
         </div>
       </header>
 
