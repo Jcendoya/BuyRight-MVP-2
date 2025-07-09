@@ -1,10 +1,9 @@
 export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-gray-50 text-slate-800">
-      <header className="bg-[#1E293B] text-white p-4 shadow">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <img src="/logo.png" alt="BuyRight" className="h-10" />
-          <span className="text-xl font-semibold">BuyRight</span>
+      <header className="bg-[#1E293B] text-white p-6 shadow">
+        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
+          <img src="/logo.png" alt="BuyRight Logo" className="h-20 mb-2" />
         </div>
       </header>
 
