@@ -25,30 +25,41 @@ export default function Analyzer() {
 
   const download = () => {
     const doc = new jsPDF()
-    doc.text('Business Summary', 20, 20)
-    doc.text(`ROI: ${(result.roi * 100).toFixed(1)}%`, 20, 30)
-    doc.text(`Payback: ${result.payback.toFixed(1)} years`, 20, 40)
-    doc.text(`SDE: $${result.sde.toFixed(0)}`, 20, 50)
-    doc.text(`Recommendation: ${result.rec}`, 20, 60)
-    doc.save("deal.pdf")
+    doc.setFontSize(16)
+    doc.text('Business Deal Summary', 20, 20)
+    doc.setFontSize(12)
+    doc.text(`ROI: ${(result.roi * 100).toFixed(1)}%`, 20, 35)
+    doc.text(`Payback: ${result.payback.toFixed(1)} years`, 20, 45)
+    doc.text(`SDE: $${result.sde.toLocaleString()}`, 20, 55)
+    doc.text(`Recommendation: ${result.rec}`, 20, 65)
+    doc.save("deal-summary.pdf")
   }
 
   return (
     <div className="p-10 max-w-xl mx-auto space-y-4">
-      <h2 className="text-2xl font-bold">Business Deal Analyzer</h2>
-      <input className="border p-2 w-full" placeholder="Revenue" onChange={e => setRevenue(e.target.value)} />
-      <input className="border p-2 w-full" placeholder="Profit" onChange={e => setProfit(e.target.value)} />
-      <input className="border p-2 w-full" placeholder="Asking Price" onChange={e => setPrice(e.target.value)} />
-      <input className="border p-2 w-full" placeholder="Owner Salary" onChange={e => setSalary(e.target.value)} />
-      <button className="bg-blue-500 text-white px-4 py-2" onClick={evaluate}>Analyze</button>
+      <h2 className="text-3xl font-bold text-center">Business Deal Analyzer</h2>
+      <p className="text-gray-600 text-center">Quickly assess ROI, payback period, and more.</p>
+
+      <input className="border p-2 w-full rounded" placeholder="Revenue ($)" onChange={e => setRevenue(e.target.value)} />
+      <input className="border p-2 w-full rounded" placeholder="Profit ($)" onChange={e => setProfit(e.target.value)} />
+      <input className="border p-2 w-full rounded" placeholder="Asking Price ($)" onChange={e => setPrice(e.target.value)} />
+      <input className="border p-2 w-full rounded" placeholder="Owner Salary ($)" onChange={e => setSalary(e.target.value)} />
+
+      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full" onClick={evaluate}>
+        Analyze Deal
+      </button>
 
       {result && (
-        <div className="bg-gray-100 p-4 rounded mt-4 space-y-2">
+        <div className="bg-green-50 p-4 rounded mt-6 shadow">
+          <h3 className="text-xl font-semibold mb-2">Your Results</h3>
           <p><strong>ROI:</strong> {(result.roi * 100).toFixed(1)}%</p>
-          <p><strong>Payback:</strong> {result.payback.toFixed(1)} years</p>
-          <p><strong>SDE:</strong> ${result.sde.toFixed(0)}</p>
+          <p><strong>Payback Period:</strong> {result.payback.toFixed(1)} years</p>
+          <p><strong>SDE:</strong> ${result.sde.toLocaleString()}</p>
           <p><strong>Recommendation:</strong> {result.rec}</p>
-          <button className="mt-2 bg-green-500 text-white px-4 py-2" onClick={download}>Download PDF</button>
+
+          <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded" onClick={download}>
+            Download Summary (PDF)
+          </button>
         </div>
       )}
     </div>
