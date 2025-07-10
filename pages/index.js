@@ -3,12 +3,12 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center px-4 space-y-10">
-      {/* Clean Title */}
-      <h1 className="text-5xl font-extrabold text-center text-green-700 tracking-tight">
+      {/* Logo/Title */}
+      <h1 className="text-5xl font-extrabold text-green-700 tracking-tight">
         BuyRight
       </h1>
 
-      {/* Tagline */}
+      {/* Tagline and Button */}
       <div className="text-center space-y-4 max-w-xl">
         <h2 className="text-3xl font-semibold">
           Know if it’s a good deal — in 60 seconds.
@@ -16,15 +16,14 @@ export default function Home() {
         <p className="text-lg text-gray-600">
           BuyRight helps you evaluate small business acquisitions instantly — no spreadsheets, no guesswork.
         </p>
-        <Link
-          href="/analyzer"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
-        >
-          Start Evaluating
+        <Link href="/analyzer">
+          <a className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
+            Start Evaluating
+          </a>
         </Link>
       </div>
 
-      {/* How It Works Section */}
+      {/* How It Works */}
       <div className="mt-12 max-w-xl text-left">
         <h3 className="text-2xl font-bold mb-4">How It Works</h3>
         <ol className="list-decimal list-inside space-y-2 text-gray-700">
@@ -36,4 +35,3 @@ export default function Home() {
     </div>
   );
 }
-
